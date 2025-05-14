@@ -170,10 +170,17 @@
             color: #555;
         }
         
+        .location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
         .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 10px;
         }
         
         .skill-tag {
@@ -191,8 +198,10 @@
             transform: translateY(-3px);
         }
         
-        .skill-bar-container {
-            margin-bottom: 15px;
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         
         .skill-name {
@@ -385,15 +394,15 @@
                             <a href="https://www.linkedin.com/in/oussama-methnani-bb4145206/" target="_blank">https://www.linkedin.com/in/oussama-methnani-bb4145206/</a>
                         </div>
                         <div class="portfolio-item">
-                            <img src="images/linkedin_2504923.png" alt="GitHub" />
+                            <img src="images/git.png" alt="GitHub" />
                             <a href="https://github.com/oussamamth1/" target="_blank">https://github.com/oussamamth1/</a>
                         </div>
                         <div class="portfolio-item">
-                            <img src="logo_15465583.png" alt="Google Play" />
+                            <img src="images/logo_15465583.png" alt="Google Play" />
                             <a href="https://play.google.com/store/apps/details?id=com.zenify_app" target="_blank">https://play.google.com/store/apps/details?id=com.zenify_app</a>
                         </div>
                         <div class="portfolio-item">
-                            <img src="/api/placeholder/24/24" alt="App Store" />
+                            <img src="images/app-store_5968627.png" alt="App Store" />
                             <a href="https://apps.apple.com/us/app/shq-guide/id6736649921" target="_blank">https://apps.apple.com/us/app/shq-guide/id6736649921</a>
                         </div>
                     </div>
@@ -405,8 +414,38 @@
                     </div>
                     
                     <div class="experience-item">
+                        <div class="position">Mobile Developer</div>
+                        <div class="company">ZenifyTrip</div>
+                        <div class="period">Février 2025 - Aujourd'hui · 4 mois</div>
+                        <div class="location">Sousse, Tunisia · Hybride</div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="position">Ingénieur mobile</div>
+                        <div class="company">Continuous Net</div>
+                        <div class="period">Juin 2023 - Mars 2025 · 1 an 10 mois</div>
+                        <div class="location">Gouvernorat Sousse, Tunisie</div>
+                        <div class="skills">Dart, Git et 8 compétences de plus</div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="position">Mobile Developer &lt;Flutter&gt;</div>
+                        <div class="company">Continuous Net</div>
+                        <div class="period">Juin 2022 - Mars 2025 · 2 ans 10 mois</div>
+                        <div class="location">Tunis, Sousse · Hybride</div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="position">Software Engineer</div>
+                        <div class="company">Continuous Net</div>
+                        <div class="period">Juillet 2023 - Février 2024 · 8 mois</div>
+                        <div class="location">Sousse, Tunisia</div>
+                        <div class="skills">C (Programming Language), Angular et 16 compétences de plus</div>
+                    </div>
+                    
+                    <div class="experience-item">
                         <div class="position">Développeur Mobile Junior</div>
-                        <div class="company">Ingoude Studio</div>
+                        <div class="company">FlutterStudio</div>
                         <div class="period">2022 - 2024</div>
                         <ul class="description">
                             <li>Chargé de créer des applications Android/iOS</li>
@@ -440,46 +479,17 @@
                         <h3>Compétences</h3>
                     </div>
                     
-                    <div class="skill-bar-container">
-                        <div class="skill-name">Développement de widgets</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar-container">
-                        <div class="skill-name">Langage de programmation Dart</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar-container">
-                        <div class="skill-name">Gestion d'état (Provider, Bloc)</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar-container">
-                        <div class="skill-name">Intégration de bibliothèques et d'APIs tierces</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar-container">
-                        <div class="skill-name">Développement d'APIs RESTful</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar-container">
-                        <div class="skill-name">Firebase</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 95%;"></div>
-                        </div>
+                    <div class="skill-tags">
+                        <div class="skill-tag">Flutter</div>
+                        <div class="skill-tag">Dart</div>
+                        <div class="skill-tag">Provider</div>
+                        <div class="skill-tag">Bloc</div>
+                        <div class="skill-tag">RESTful API</div>
+                        <div class="skill-tag">Firebase</div>
+                        <div class="skill-tag">Nest.js</div>
+                        <div class="skill-tag">Git</div>
+                        <div class="skill-tag">Angular</div>
+                        <div class="skill-tag">C</div>
                     </div>
                 </div>
                 
@@ -490,7 +500,7 @@
                     
                     <div class="experience-item">
                         <div class="position">Ihsen mhathbi</div>
-                        <div class="company">Ingoude Studio</div>
+                        <!-- <div class="company">Ingoude Studio</div> -->
                         <div class="description">
                             Email: ihsen-Mhathbi@gmail.com<br>
                             Téléphone: 29-380-781
