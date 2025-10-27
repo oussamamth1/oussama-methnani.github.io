@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oussama Methnani - Développeur Mobile</title>
+    <title>Oussama Methnani - Développeur Mobile Flutter & NestJS</title>
     <style>
         :root {
-            --primary-color: #2a3b55;
+            --primary-color: #2563eb;
             --secondary-color: #f0f5ff;
             --dark-color: #333;
             --light-color: #f4f4f4;
@@ -42,7 +42,7 @@
         }
         
         .header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
             color: white;
             padding: 40px;
             text-align: center;
@@ -57,6 +57,7 @@
             margin: 0 auto 20px;
             display: block;
             overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         .profile-pic img {
@@ -67,35 +68,48 @@
         
         .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 5px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .header h2 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 400;
-            opacity: 0.9;
+            opacity: 0.95;
+            margin-bottom: 5px;
         }
         
         .contact-info {
             background-color: var(--secondary-color);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            padding: 20px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-size: 0.95rem;
         }
         
         .contact-item svg {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             fill: var(--primary-color);
+            flex-shrink: 0;
+        }
+        
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--primary-color);
         }
         
         .main-content {
@@ -103,7 +117,7 @@
         }
         
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         
         .section-header {
@@ -114,24 +128,26 @@
         }
         
         .section-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .section-header::after {
             content: '';
             flex: 1;
-            height: 1px;
-            background-color: #ddd;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-color), transparent);
             margin-left: 15px;
         }
         
         .experience-item, .education-item {
             margin-bottom: 25px;
             position: relative;
-            padding-left: 20px;
-            border-left: 2px solid var(--primary-color);
+            padding-left: 25px;
+            border-left: 3px solid var(--primary-color);
         }
         
         .experience-item:last-child, .education-item:last-child {
@@ -141,33 +157,50 @@
         .experience-item::before, .education-item::before {
             content: '';
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background-color: var(--primary-color);
-            left: -7px;
+            left: -9px;
             top: 5px;
+            box-shadow: 0 0 0 3px white, 0 0 0 6px var(--secondary-color);
         }
         
         .position, .degree {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.25rem;
+            font-weight: 700;
             margin-bottom: 5px;
+            color: var(--dark-color);
         }
         
         .company, .university {
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--primary-color);
             margin-bottom: 5px;
+            font-size: 1.05rem;
         }
         
         .period {
             font-size: 0.9rem;
-            color: #777;
+            color: #666;
             margin-bottom: 10px;
+            font-weight: 500;
         }
         
         .description {
             color: #555;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        
+        .description ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .description li {
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
         
         .location {
@@ -176,76 +209,93 @@
             margin-bottom: 5px;
         }
         
-        .skills {
+        .skills-info {
             font-size: 0.9rem;
-            color: #555;
+            color: #666;
             font-style: italic;
             margin-bottom: 10px;
         }
         
         .skill-tag {
             background-color: var(--secondary-color);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: var(--transition);
             cursor: pointer;
+            border: 2px solid transparent;
         }
         
         .skill-tag:hover {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
         }
         
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .skill-name {
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .skill-bar {
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .skill-level {
-            height: 100%;
-            background-color: var(--primary-color);
+            gap: 12px;
         }
         
         .portfolio-links {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 15px;
         }
         
         .portfolio-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            padding: 12px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            background-color: #e0ebff;
+            transform: translateX(5px);
         }
         
         .portfolio-item img {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
         }
         
         .portfolio-item a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: var(--transition);
+            font-weight: 500;
+            word-break: break-all;
+            font-size: 0.9rem;
         }
         
         .portfolio-item a:hover {
             text-decoration: underline;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+        
+        .download-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
         }
         
         .theme-switcher {
@@ -254,25 +304,69 @@
             right: 20px;
             background-color: var(--primary-color);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: var(--transition);
+            z-index: 1000;
         }
         
         .theme-switcher:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
         
         .theme-switcher svg {
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             fill: white;
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: #10b981;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .print-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+        }
+        
+        @media print {
+            .theme-switcher, .print-btn {
+                display: none !important;
+            }
+            body {
+                background: white;
+            }
+            .resume {
+                box-shadow: none;
+                margin: 0;
+            }
         }
         
         @media (max-width: 768px) {
@@ -290,56 +384,83 @@
             }
             
             .header h2 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .contact-info {
                 padding: 15px 20px;
+                grid-template-columns: 1fr;
             }
             
             .main-content {
                 padding: 30px 20px;
             }
+            
+            .section-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .portfolio-links {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Dark mode */
         body.dark-mode {
-            background-color: #121212;
-            color: #f4f4f4;
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
         
         body.dark-mode .resume {
-            background-color: #1e1e1e;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: #1e293b;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         
         body.dark-mode .contact-info {
-            background-color: #2d2d2d;
+            background-color: #334155;
         }
         
         body.dark-mode .description,
-        body.dark-mode .period {
-            color: #b8b8b8;
+        body.dark-mode .period,
+        body.dark-mode .location,
+        body.dark-mode .skills-info {
+            color: #94a3b8;
         }
         
         body.dark-mode .section-header::after {
-            background-color: #444;
+            background: linear-gradient(to right, var(--primary-color), transparent);
         }
         
         body.dark-mode .skill-tag {
-            background-color: #2d2d2d;
+            background-color: #334155;
+            color: #e2e8f0;
         }
         
         body.dark-mode .skill-tag:hover {
             background-color: var(--primary-color);
+            color: white;
         }
         
-        body.dark-mode .skill-bar {
-            background-color: #444;
+        body.dark-mode .portfolio-item {
+            background-color: #334155;
+        }
+        
+        body.dark-mode .portfolio-item:hover {
+            background-color: #475569;
         }
         
         body.dark-mode .portfolio-item a {
-            color: #6b9fff;
+            color: #60a5fa;
+        }
+        
+        body.dark-mode .experience-item::before,
+        body.dark-mode .education-item::before {
+            box-shadow: 0 0 0 3px #1e293b, 0 0 0 6px #334155;
+        }
+        
+        body.dark-mode .position,
+        body.dark-mode .degree {
+            color: #f1f5f9;
         }
     </style>
 </head>
@@ -351,35 +472,35 @@
                     <img src="images/bg_1.jpg" alt="Oussama Methnani" />
                 </div>
                 <h1>OUSSAMA METHNANI</h1>
-                <h2>Développeur Mobile</h2>
+                <h2>Développeur Mobile | Spécialiste Flutter & Dart</h2>
             </div>
             
             <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span>+216 20 640 783</span>
+                </div>
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     <span>oussamamethnani321@gmail.com</span>
                 </div>
                 <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    <span>20-640-783</span>
-                </div>
-                <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <span>4022, Akouda, Sousse, Tunisia</span>
+                    <span>Akouda, Sousse, Tunisie</span>
                 </div>
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                    <span><a href="https://www.linkedin.com/in/oussama-methnani-bb4145206/" style="color: inherit; text-decoration: none;">linkedin.com/in/oussama-methnani</a></span>
+                    <a href="https://www.linkedin.com/in/oussama-methnani-bb4145206/">LinkedIn</a>
                 </div>
             </div>
             
             <div class="main-content">
                 <div class="section">
                     <div class="section-header">
-                        <h3>Profil</h3>
+                        <h3>Profil Professionnel</h3>
                     </div>
                     <p class="description">
-                        Développeur Mobile avec une solide expérience dans la conception et le développement d'applications innovantes. Expert dans des technologies modernes telles que Dart, Nest.js, et la gestion d'état (Provider, Bloc). Passionné par la création de solutions numériques efficaces et intuitives, avec un fort engagement pour l'excellence technique et la satisfaction des utilisateurs. Mon objectif est de contribuer à des projets ambitieux qui allient innovation et impact réel.
+                        Développeur Mobile orienté résultats avec plus de 3 ans d'expérience dans la conception et le développement d'applications performantes utilisant Flutter pour les plateformes Android, iOS et Web. Expertise avérée dans la création d'API RESTful évolutives avec Nest.js, la création de packages et bibliothèques de composants réutilisables, et la mise en œuvre de pipelines CI/CD modernes avec Firebase App Distribution. Compétent dans les solutions avancées de gestion d'état (Riverpod, Provider, BLoC) et l'intégration complète de l'écosystème Firebase. Engagé à fournir des solutions innovantes centrées sur l'utilisateur qui apportent de la valeur commerciale et améliorent l'expérience utilisateur.
                     </p>
                 </div>
                 
@@ -391,105 +512,95 @@
                     <div class="portfolio-links">
                         <div class="portfolio-item">
                             <img src="images/linkedin_2504923.png" alt="LinkedIn" />
-                            <a href="https://www.linkedin.com/in/oussama-methnani-bb4145206/" target="_blank">https://www.linkedin.com/in/oussama-methnani-bb4145206/</a>
+                            <a href="https://www.linkedin.com/in/oussama-methnani-bb4145206/" target="_blank">LinkedIn Profile</a>
                         </div>
                         <div class="portfolio-item">
                             <img src="images/git.png" alt="GitHub" />
-                            <a href="https://github.com/oussamamth1/" target="_blank">https://github.com/oussamamth1/</a>
+                            <a href="https://github.com/oussamamth1/" target="_blank">github.com/oussamamth1</a>
                         </div>
                         <div class="portfolio-item">
                             <img src="images/logo_15465583.png" alt="Google Play" />
-                            <a href="https://play.google.com/store/apps/details?id=com.zenify_app" target="_blank">https://play.google.com/store/apps/details?id=com.zenify_app</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.zenify_app" target="_blank">G-Sunshine App</a>
                         </div>
                         <div class="portfolio-item">
                             <img src="images/app-store_5968627.png" alt="App Store" />
-                            <a href="https://apps.apple.com/us/app/shq-guide/id6736649921" target="_blank">https://apps.apple.com/us/app/shq-guide/id6736649921</a>
+                            <a href="https://apps.apple.com/us/app/shq-guide/id6736649921" target="_blank">SHQ Guide App</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="section">
                     <div class="section-header">
-                        <h3>Expérience</h3>
+                        <h3>Expérience Professionnelle</h3>
                     </div>
                     
                     <div class="experience-item">
-                        <div class="position">Mobile Developer</div>
-                        <div class="company">ZenifyTrip</div>
-                        <div class="period">Février 2025 - Aujourd'hui · 4 mois</div>
-                        <div class="location">Sousse, Tunisia · Hybride</div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="position">Ingénieur mobile</div>
+                        <div class="position">Développeur Mobile</div>
                         <div class="company">Continuous Net</div>
-                        <div class="period">Juin 2023 - Mars 2025 · 1 an 10 mois</div>
-                        <div class="location">Gouvernorat Sousse, Tunisie</div>
-                        <div class="skills">Dart, Git et 8 compétences de plus</div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="position">Mobile Developer &lt;Flutter&gt;</div>
-                        <div class="company">Continuous Net</div>
-                        <div class="period">Juin 2022 - Mars 2025 · 2 ans 10 mois</div>
-                        <div class="location">Tunis, Sousse · Hybride</div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="position">Software Engineer</div>
-                        <div class="company">Continuous Net</div>
-                        <div class="period">Juillet 2023 - Février 2024 · 8 mois</div>
-                        <div class="location">Sousse, Tunisia</div>
-                        <div class="skills">C (Programming Language), Angular et 16 compétences de plus</div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="position">Développeur Mobile Junior</div>
-                        <div class="company">FlutterStudio</div>
-                        <div class="period">2022 - 2024</div>
-                        <ul class="description">
-                            <li>Chargé de créer des applications Android/iOS</li>
-                            <li>Expérience dans la création d'APIs RESTful avec Nest.js</li>
-                            <li>Responsable du cycle de vie complet de l'application, de la conception au déploiement</li>
-                            <li>Collaboration avec des équipes interfonctionnelles pour comprendre et répondre aux exigences commerciales et techniques</li>
-                        </ul>
+                        <div class="period">2022 - 2025 · 3 ans</div>
+                        <div class="location">Sousse, Tunisie · Hybride</div>
+                        <div class="description">
+                            <ul>
+                                <li>Développement et maintenance d'applications multiplateformes haute performance pour Android, iOS et Web avec Flutter, servant des milliers d'utilisateurs actifs</li>
+                                <li>Création et publication de packages Flutter réutilisables sur pub.dev, incluant des packages de couche réseau personnalisés qui ont amélioré la maintenabilité du code et réduit le temps de développement sur plusieurs projets</li>
+                                <li>Conception et implémentation d'APIs RESTful sécurisées et évolutives avec Nest.js, garantissant des performances optimales et l'intégrité des données</li>
+                                <li>Mise en place de pipelines CI/CD automatisés avec GitHub Actions et GitLab CI, intégrés à Firebase App Distribution pour des tests rationalisés et une livraison rapide aux équipes QA</li>
+                                <li>Implémentation de solutions avancées de gestion d'état avec Riverpod pour une architecture d'application réactive et évolutive</li>
+                                <li>Développement de widgets personnalisés réutilisables et de bibliothèques de composants pour assurer la cohérence de l'interface utilisateur et accélérer le développement de fonctionnalités</li>
+                                <li>Implémentation de systèmes avancés de notifications push avec Firebase Cloud Messaging (FCM) avec des stratégies de gestion par sujets et tokens individuels</li>
+                                <li>Gestion du cycle de vie complet de l'application incluant la conception d'architecture, le développement, l'assurance qualité, le déploiement et la maintenance continue</li>
+                                <li>Collaboration étroite avec des équipes interfonctionnelles incluant les chefs de produit, les designers UX/UI et les ingénieurs QA pour traduire les exigences métier en solutions techniques efficaces</li>
+                                <li>Intégration complète des services Firebase (Authentication, Firestore, Crashlytics, Analytics, App Distribution) pour améliorer les fonctionnalités de l'application et l'expérience utilisateur</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="section">
                     <div class="section-header">
-                        <h3>Éducation</h3>
+                        <h3>Formation</h3>
                     </div>
                     
                     <div class="education-item">
                         <div class="degree">Master en Génie Logiciel et Développement Rapide d'Applications</div>
-                        <div class="university">Université Iset</div>
+                        <div class="university">Université ISET</div>
                         <div class="period">2017 - 2022</div>
                     </div>
                     
                     <div class="education-item">
                         <div class="degree">Licence en Technologie</div>
-                        <div class="university">Salem Ben Hmida Université</div>
+                        <div class="university">Université Salem Ben Hmida</div>
                         <div class="period">2012 - 2016</div>
                     </div>
                 </div>
                 
                 <div class="section">
                     <div class="section-header">
-                        <h3>Compétences</h3>
+                        <h3>Compétences Techniques</h3>
                     </div>
                     
                     <div class="skill-tags">
-                        <div class="skill-tag">Flutter</div>
+                        <div class="skill-tag">Flutter (Android, iOS, Web)</div>
                         <div class="skill-tag">Dart</div>
+                        <div class="skill-tag">Riverpod</div>
                         <div class="skill-tag">Provider</div>
-                        <div class="skill-tag">Bloc</div>
+                        <div class="skill-tag">BLoC</div>
+                        <div class="skill-tag">NestJS</div>
+                        <div class="skill-tag">TypeScript</div>
                         <div class="skill-tag">RESTful API</div>
-                        <div class="skill-tag">Firebase</div>
-                        <div class="skill-tag">Nest.js</div>
+                        <div class="skill-tag">Firebase Suite</div>
+                        <div class="skill-tag">FCM</div>
+                        <div class="skill-tag">Firestore</div>
+                        <div class="skill-tag">Firebase Authentication</div>
+                        <div class="skill-tag">Firebase App Distribution</div>
+                        <div class="skill-tag">CI/CD</div>
+                        <div class="skill-tag">GitHub Actions</div>
+                        <div class="skill-tag">GitLab CI</div>
                         <div class="skill-tag">Git</div>
-                        <div class="skill-tag">Angular</div>
-                        <div class="skill-tag">C</div>
+                        <div class="skill-tag">Crashlytics</div>
+                        <div class="skill-tag">Analytics</div>
+                        <div class="skill-tag">Package Development</div>
+                        <div class="skill-tag">pub.dev</div>
                     </div>
                 </div>
                 
@@ -499,28 +610,41 @@
                     </div>
                     
                     <div class="experience-item">
-                        <div class="position">Ihsen mhathbi</div>
-                        <!-- <div class="company">Ingoude Studio</div> -->
+                        <div class="position">Ihsen Mhathbi</div>
+                        <div class="company">Continuous Net</div>
                         <div class="description">
                             Email: ihsen-Mhathbi@gmail.com<br>
-                            Téléphone: 29-380-781
+                            Téléphone: +216 29 380 781
                         </div>
-                        <div><a href="oussamaCv.pdf" download="oussamaCv.pdf" style="display:inline-block; margin:20px; padding:10px 20px; background:#2a3b55; color:white; border-radius:5px; text-decoration:none;">
-    Télécharger mon CV (PDF)
-                        </a></div>
                     </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="oussamaCv.pdf" download="Oussama_Methnani_CV.pdf" class="download-btn">
+                        📥 Télécharger mon CV (PDF)
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="theme-switcher" onclick="toggleTheme()">
+    <div class="print-btn" onclick="window.print()" title="Imprimer le CV">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+    </div>
+    
+    <div class="theme-switcher" onclick="toggleTheme()" title="Changer le thème">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 15.31l1.9-1.9c.78-.78.78-2.05 0-2.83L20 8.69V6c0-1.1-.9-2-2-2h-2.69l-1.9-1.9c-.78-.78-2.05-.78-2.83 0L8.69 4H6c-1.1 0-2 .9-2 2v2.69l-1.9 1.9c-.78.78-.78 2.05 0 2.83l1.9 1.9V18c0 1.1.9 2 2 2h2.69l1.9 1.9c.78.78 2.05.78 2.83 0l1.9-1.9H18c1.1 0 2-.9 2-2v-2.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
     </div>
     
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+        
+        // Load saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
         }
     </script>
 </body>
