@@ -337,13 +337,35 @@
             fill: #667eea;
         }
 
+        .print-btn {
+            display: inline-block;
+            background: #2d3748;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .print-btn:hover {
+            transform: translateY(-2px);
+        }
+        body.dark-mode .print-btn {
+            background: #4a5568;
+        }
+
         @media print {
             body {
                 background: white;
                 padding: 0;
             }
-            .language-switcher, .theme-switcher, .download-btn {
-                display: none;
+            .language-switcher, .theme-switcher, .download-btn, .print-btn {
+                display: none !important;
             }
             .resume {
                 box-shadow: none;
@@ -379,7 +401,7 @@
                     <img src="images/oussamaimg.jpeg" alt="Oussama Methnani" />
                 </div>
                 <h1>OUSSAMA METHNANI</h1>
-                <h2 data-translate="subtitle">Développeur Mobile | Spécialiste Flutter & Dart</h2>
+                <h2 data-translate="subtitle">Développeur Mobile | Spécialiste Flutter & Dart · 3.5+ ans d'expérience</h2>
             </div>
             
             <div class="contact-info">
@@ -427,11 +449,15 @@
                         </div>
                         <div class="portfolio-item">
                             <span>📱</span>
-                            <a href="https://play.google.com/store/apps/details?id=com.zenify_app" target="_blank">G-Sunshine App</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.zenifytrip.tunisiepromo.app&hl=fr" target="_blank">Tunisie Promo: Hôtels & Voyage (Play Store)</a>
+                        </div>
+                        <div class="portfolio-item">
+                            <span>📱</span>
+                            <a href="https://play.google.com/store/apps/details?id=com.zenify_client_app.tunisie_promo&hl=fr" target="_blank">Tunisie Promo – Client App (Play Store)</a>
                         </div>
                         <div class="portfolio-item">
                             <span>🍎</span>
-                            <a href="https://apps.apple.com/us/app/shq-guide/id6736649921" target="_blank">SHQ Guide App</a>
+                            <a href="https://apps.apple.com/us/app/shq-guide/id6736649921" target="_blank">SHQ Guide App (App Store)</a>
                         </div>
                     </div>
                 </div>
@@ -444,7 +470,7 @@
                     <div class="experience-item">
                         <div class="position" data-translate="jobTitle">Développeur Mobile</div>
                         <div class="company">Continuous Net</div>
-                        <div class="period">2022 - 2025 · 3 <span data-translate="years">ans</span></div>
+                        <div class="period">2022 - 2025 · 3.5 <span data-translate="years">ans</span></div>
                         <div class="location">Sousse, Tunisie · <span data-translate="hybrid">Hybride</span></div>
                         <div class="description">
                             <ul data-translate="jobDesc">
@@ -527,9 +553,10 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 30px;">
-                    <a href="#" class="download-btn" data-translate="downloadBtn">
+                    <a href="Oussama_Methnani.pdf" download="Oussama_Methnani_CV.pdf" class="download-btn" data-translate="downloadBtn">
                         📥 Télécharger mon CV (PDF)
                     </a>
+                    <button type="button" class="print-btn" onclick="window.print();" data-translate="printBtn">🖨️ Enregistrer en PDF</button>
                 </div>
             </div>
         </div>
@@ -542,9 +569,9 @@
     <script>
         const translations = {
             fr: {
-                subtitle: "Développeur Mobile | Spécialiste Flutter & Dart",
+                subtitle: "Développeur Mobile | Spécialiste Flutter & Dart · 3.5+ ans d'expérience",
                 profileTitle: "Profil Professionnel",
-                profileDesc: "Développeur Mobile orienté résultats avec plus de 3 ans d'expérience dans la conception et le développement d'applications performantes utilisant Flutter pour les plateformes Android, iOS et Web. Expertise avérée dans la création d'API RESTful évolutives avec Nest.js, la création de packages et bibliothèques de composants réutilisables, et la mise en œuvre de pipelines CI/CD modernes avec Firebase App Distribution. Compétent dans les solutions avancées de gestion d'état (Riverpod, Provider, BLoC) et l'intégration complète de l'écosystème Firebase. Engagé à fournir des solutions innovantes centrées sur l'utilisateur qui apportent de la valeur commerciale et améliorent l'expérience utilisateur.",
+                profileDesc: "Développeur Mobile orienté résultats avec plus de 3,5 ans d'expérience dans la conception et le développement d'applications performantes utilisant Flutter pour les plateformes Android, iOS et Web. Expertise avérée dans la création d'API RESTful évolutives avec Nest.js, la création de packages et bibliothèques de composants réutilisables, et la mise en œuvre de pipelines CI/CD modernes avec Firebase App Distribution. Compétent dans les solutions avancées de gestion d'état (Riverpod, Provider, BLoC) et l'intégration complète de l'écosystème Firebase. Engagé à fournir des solutions innovantes centrées sur l'utilisateur qui apportent de la valeur commerciale et améliorent l'expérience utilisateur.",
                 portfolioTitle: "Portefeuille",
                 experienceTitle: "Expérience Professionnelle",
                 jobTitle: "Développeur Mobile",
@@ -570,12 +597,13 @@
                 skillsTitle: "Compétences Techniques",
                 referenceTitle: "Référence",
                 phone: "Téléphone",
-                downloadBtn: "📥 Télécharger mon CV (PDF)"
+                downloadBtn: "📥 Télécharger mon CV (PDF)",
+                printBtn: "🖨️ Enregistrer en PDF"
             },
             en: {
-                subtitle: "Mobile Developer | Flutter & Dart Specialist",
+                subtitle: "Mobile Developer | Flutter & Dart Specialist · 3.5+ years experience",
                 profileTitle: "Professional Profile",
-                profileDesc: "Results-driven Mobile Developer with over 3 years of experience in designing and developing high-performance applications using Flutter for Android, iOS, and Web platforms. Proven expertise in creating scalable RESTful APIs with Nest.js, building reusable packages and component libraries, and implementing modern CI/CD pipelines with Firebase App Distribution. Proficient in advanced state management solutions (Riverpod, Provider, BLoC) and comprehensive Firebase ecosystem integration. Committed to delivering innovative user-centered solutions that bring business value and enhance user experience.",
+                profileDesc: "Results-driven Mobile Developer with over 3.5 years of experience in designing and developing high-performance applications using Flutter for Android, iOS, and Web platforms. Proven expertise in creating scalable RESTful APIs with Nest.js, building reusable packages and component libraries, and implementing modern CI/CD pipelines with Firebase App Distribution. Proficient in advanced state management solutions (Riverpod, Provider, BLoC) and comprehensive Firebase ecosystem integration. Committed to delivering innovative user-centered solutions that bring business value and enhance user experience.",
                 portfolioTitle: "Portfolio",
                 experienceTitle: "Professional Experience",
                 jobTitle: "Mobile Developer",
@@ -601,12 +629,13 @@
                 skillsTitle: "Technical Skills",
                 referenceTitle: "Reference",
                 phone: "Phone",
-                downloadBtn: "📥 Download my CV (PDF)"
+                downloadBtn: "📥 Download my CV (PDF)",
+                printBtn: "🖨️ Save as PDF"
             },
             it: {
-                subtitle: "Sviluppatore Mobile | Specialista Flutter & Dart",
+                subtitle: "Sviluppatore Mobile | Specialista Flutter & Dart · 3.5+ anni di esperienza",
                 profileTitle: "Profilo Professionale",
-                profileDesc: "Sviluppatore Mobile orientato ai risultati con oltre 3 anni di esperienza nella progettazione e sviluppo di applicazioni ad alte prestazioni utilizzando Flutter per piattaforme Android, iOS e Web. Comprovata esperienza nella creazione di API RESTful scalabili con Nest.js, sviluppo di pacchetti riutilizzabili e librerie di componenti, e implementazione di moderne pipeline CI/CD con Firebase App Distribution. Competente in soluzioni avanzate di gestione dello stato (Riverpod, Provider, BLoC) e integrazione completa dell'ecosistema Firebase. Impegnato a fornire soluzioni innovative incentrate sull'utente che apportano valore commerciale e migliorano l'esperienza utente.",
+                profileDesc: "Sviluppatore Mobile orientato ai risultati con oltre 3,5 anni di esperienza nella progettazione e sviluppo di applicazioni ad alte prestazioni utilizzando Flutter per piattaforme Android, iOS e Web. Comprovata esperienza nella creazione di API RESTful scalabili con Nest.js, sviluppo di pacchetti riutilizzabili e librerie di componenti, e implementazione di moderne pipeline CI/CD con Firebase App Distribution. Competente in soluzioni avanzate di gestione dello stato (Riverpod, Provider, BLoC) e integrazione completa dell'ecosistema Firebase. Impegnato a fornire soluzioni innovative incentrate sull'utente che apportano valore commerciale e migliorano l'esperienza utente.",
                 portfolioTitle: "Portfolio",
                 experienceTitle: "Esperienza Professionale",
                 jobTitle: "Sviluppatore Mobile",
@@ -632,7 +661,8 @@
                 skillsTitle: "Competenze Tecniche",
                 referenceTitle: "Riferimento",
                 phone: "Telefono",
-                downloadBtn: "📥 Scarica il mio CV (PDF)"
+                downloadBtn: "📥 Scarica il mio CV (PDF)",
+                printBtn: "🖨️ Salva come PDF"
             }
         };
 
