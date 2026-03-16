@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oussama Methnani - Lettre de motivation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .nav-links {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .nav-links a {
+            background: rgba(255,255,255,0.95);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .nav-links a:hover { transform: translateY(-2px); }
+        body.dark-mode .nav-links a {
+            background: #2d3748;
+            color: #9f7aea;
+        }
+        .lang-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+        }
+        .lang-btn {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .lang-btn:hover:not(.active) { background: #f0f0f0; }
+        body.dark-mode .lang-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        body.dark-mode .lang-btn:hover:not(.active) { background: #4a5568; }
+        .theme-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        body.dark-mode .theme-btn { background: #2d3748; }
+        .letter {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            margin-top: 70px;
+            padding: 48px 56px 56px;
+        }
+        body.dark-mode .letter {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        .letter h1 {
+            text-align: center;
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 32px;
+        }
+        body.dark-mode .letter h1 { color: #9f7aea; }
+        .sender, .recipient {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            color: #444;
+        }
+        body.dark-mode .sender, body.dark-mode .recipient { color: #cbd5e0; }
+        .subject {
+            font-weight: 700;
+            margin: 20px 0 24px;
+            color: #333;
+        }
+        body.dark-mode .subject { color: #e2e8f0; }
+        .body-text {
+            text-align: justify;
+            line-height: 1.85;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        body.dark-mode .body-text { color: #e2e8f0; }
+        .signature {
+            margin-top: 32px;
+            font-weight: 600;
+            color: #667eea;
+        }
+        body.dark-mode .signature { color: #9f7aea; }
+        .actions {
+            text-align: center;
+            margin-top: 36px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        body.dark-mode .btn-outline {
+            color: #9f7aea;
+            border-color: #9f7aea;
+        }
+        .btn-outline:hover { transform: translateY(-2px); }
+        @media print {
+            body { background: white; padding: 0; }
+            .nav-links, .lang-theme, .actions { display: none !important; }
+            .letter { box-shadow: none; margin-top: 0; }
+        }
+        @media (max-width: 600px) {
+            .letter { padding: 28px 24px 36px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-links">
+        <a href="index.html">← Portfolio</a>
+        <a href="cv.html">CV</a>
+    </div>
+    <div class="lang-theme">
+        <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="theme-btn" onclick="document.body.classList.toggle('dark-mode')" title="Thème" aria-label="Changer le thème">🌓</button>
+    </div>
+
+    <div class="container">
+        <div class="letter" id="letter-content">
+            <h1 data-fr="Lettre de motivation" data-en="Cover Letter">Lettre de motivation</h1>
+
+            <div class="sender" data-fr="Oussama Methnani&#10;Akouda, Sousse&#10;Tunisie&#10;+216 20 640 783&#10;oussamamethnani321@gmail.com" data-en="Oussama Methnani&#10;Akouda, Sousse&#10;Tunisia&#10;+216 20 640 783&#10;oussamamethnani321@gmail.com">
+                Oussama Methnani<br>Akouda, Sousse<br>Tunisie<br>+216 20 640 783<br>oussamamethnani321@gmail.com
+            </div>
+
+            <p class="recipient" data-fr="[Nom de l'entreprise / du recruteur]&#10;[Adresse]&#10;[Ville, Code postal]" data-en="[Company / Recruiter name]&#10;[Address]&#10;[City, Postal code]">
+                [Nom de l'entreprise / du recruteur]<br>[Adresse]<br>[Ville, Code postal]
+            </p>
+
+            <p class="subject" data-fr="Objet : Candidature – Développeur Mobile Flutter" data-en="Subject: Application – Flutter Mobile Developer">
+                Objet : Candidature – Développeur Mobile Flutter
+            </p>
+
+            <p class="body-text" data-fr="Madame, Monsieur," data-en="Dear Sir or Madam,">
+                Madame, Monsieur,
+            </p>
+
+            <p class="body-text" data-fr="Titulaire d’un Master en génie logiciel et fort de plus de 3,5 ans d’expérience en développement mobile avec Flutter, je me permets de vous adresser ma candidature pour un poste de Développeur Mobile au sein de votre structure." data-en="With a Master’s degree in software engineering and over 3.5 years of experience in mobile development with Flutter, I would like to apply for a Mobile Developer position within your company.">
+                Titulaire d'un Master en génie logiciel et fort de plus de 3,5 ans d'expérience en développement mobile avec Flutter, je me permets de vous adresser ma candidature pour un poste de Développeur Mobile au sein de votre structure.
+            </p>
+
+            <p class="body-text" data-fr="Au cours de mon expérience chez Continuous Net, j’ai conçu et maintenu des applications multiplateformes (Android, iOS, Web) publiées sur le Play Store et l’App Store. J’ai notamment travaillé sur des projets tels que Tunisie Promo et d’autres applications à fort trafic. J’utilise au quotidien Flutter, Dart, NestJS, Firebase (App Distribution, Realtime Database, notifications, Firestore), ainsi que des outils de CI/CD et des solutions de gestion d’état (Bloc, Riverpod, Provider)." data-en="During my experience at Continuous Net, I designed and maintained cross-platform applications (Android, iOS, Web) published on the Play Store and App Store. I worked on projects such as Tunisie Promo and other high-traffic applications. I use Flutter, Dart, NestJS, Firebase (App Distribution, Realtime Database, notifications, Firestore), as well as CI/CD tools and state management solutions (Bloc, Riverpod, Provider) on a daily basis.">
+                Au cours de mon expérience chez Continuous Net, j'ai conçu et maintenu des applications multiplateformes (Android, iOS, Web) publiées sur le Play Store et l'App Store. J'ai notamment travaillé sur des projets tels que Tunisie Promo et d'autres applications à fort trafic. J'utilise au quotidien Flutter, Dart, NestJS, Firebase (App Distribution, Realtime Database, notifications, Firestore), ainsi que des outils de CI/CD et des solutions de gestion d'état (Bloc, Riverpod, Provider).
+            </p>
+
+            <p class="body-text" data-fr="Soucieux de m’investir dans des projets exigeants et innovants, je serais ravi de pouvoir contribuer à vos équipes et d’échanger avec vous lors d’un entretien." data-en="Eager to contribute to demanding and innovative projects, I would be glad to join your teams and to discuss with you in an interview.">
+                Soucieux de m'investir dans des projets exigeants et innovants, je serais ravi de pouvoir contribuer à vos équipes et d'échanger avec vous lors d'un entretien.
+            </p>
+
+            <p class="body-text" data-fr="Veuillez agréer, Madame, Monsieur, l’expression de ma considération distinguée." data-en="Yours sincerely,">
+                Veuillez agréer, Madame, Monsieur, l'expression de ma considération distinguée.
+            </p>
+
+            <p class="signature">Oussama Methnani</p>
+
+            <div class="actions">
+                <button type="button" class="btn btn-primary" onclick="window.print();">🖨️ Enregistrer en PDF</button>
+                <a href="cv.html" class="btn btn-outline">Voir mon CV</a>
+                <a href="index.html" class="btn btn-outline">Retour au portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
+            document.querySelectorAll('[data-fr][data-en]').forEach(el => {
+                const text = el.getAttribute(lang === 'en' ? 'data-en' : 'data-fr');
+                if (text) el.innerHTML = text.replace(/&#10;/g, '<br>');
+            });
+            const h1 = document.querySelector('h1');
+            if (h1) h1.textContent = h1.getAttribute(lang === 'en' ? 'data-en' : 'data-fr');
+            document.querySelector('.actions button').textContent = lang === 'en' ? '🖨️ Save as PDF' : '🖨️ Enregistrer en PDF';
+            document.querySelectorAll('.actions .btn-outline').forEach((a, i) => {
+                if (i === 0) a.textContent = lang === 'en' ? 'View my CV' : 'Voir mon CV';
+                if (i === 1) a.textContent = lang === 'en' ? 'Back to portfolio' : 'Retour au portfolio';
+            });
+        }
+        setLang('fr');
+    </script>
+</body>
+</html>
