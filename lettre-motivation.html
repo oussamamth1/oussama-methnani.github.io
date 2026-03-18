@@ -161,9 +161,41 @@
             border-color: #9f7aea;
         }
         .btn-outline:hover { transform: translateY(-2px); }
+        .letter-options {
+            margin-bottom: 24px;
+            padding: 16px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+        }
+        body.dark-mode .letter-options {
+            background: #1a202c;
+            border-color: #4a5568;
+        }
+        .letter-options label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        body.dark-mode .letter-options label { color: #e2e8f0; }
+        .letter-options input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        body.dark-mode .letter-options input {
+            background: #2d3748;
+            border-color: #4a5568;
+            color: #e2e8f0;
+        }
         @media print {
             body { background: white; padding: 0; }
-            .nav-links, .lang-theme, .actions { display: none !important; }
+            .nav-links, .lang-theme, .actions, .letter-options { display: none !important; }
             .letter { box-shadow: none; margin-top: 0; }
         }
         @media (max-width: 600px) {
@@ -190,7 +222,12 @@
                 Oussama Methnani<br>Akouda, Sousse<br>Tunisie<br>+216 20 640 783<br>oussamamethnani321@gmail.com
             </div>
 
-            <p class="subject" data-fr="Objet : Candidature – Développeur Mobile Flutter" data-en="Subject: Application – Flutter Mobile Developer">
+            <div class="letter-options">
+                <label for="subject-input" data-fr-label="Adapter l'objet pour cette candidature (optionnel)" data-en-label="Customize subject for this application (optional)">Adapter l'objet pour cette candidature (optionnel)</label>
+                <input type="text" id="subject-input" placeholder="Objet : Candidature – Développeur Mobile Flutter" maxlength="120" />
+            </div>
+
+            <p class="subject" id="subject-text" data-fr="Objet : Candidature – Développeur Mobile Flutter" data-en="Subject: Application – Flutter Mobile Developer">
                 Objet : Candidature – Développeur Mobile Flutter
             </p>
 
@@ -225,7 +262,18 @@
     </div>
 
     <script>
+        const defaultSubjects = { fr: "Objet : Candidature – Développeur Mobile Flutter", en: "Subject: Application – Flutter Mobile Developer" };
+        const input = document.getElementById('subject-input');
+        const subjectEl = document.getElementById('subject-text');
+
+        function updateSubject() {
+            const val = input.value.trim();
+            subjectEl.textContent = val || defaultSubjects[currentLang];
+        }
+
+        let currentLang = 'fr';
         function setLang(lang) {
+            currentLang = lang;
             document.querySelectorAll('.lang-btn').forEach(b => { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
             document.querySelectorAll('[data-fr][data-en]').forEach(el => {
                 const text = el.getAttribute(lang === 'en' ? 'data-en' : 'data-fr');
@@ -233,12 +281,18 @@
             });
             const h1 = document.querySelector('h1');
             if (h1) h1.textContent = h1.getAttribute(lang === 'en' ? 'data-en' : 'data-fr');
+            const label = document.querySelector('.letter-options label');
+            if (label) label.textContent = label.getAttribute(lang === 'en' ? 'data-en-label' : 'data-fr-label');
+            input.placeholder = defaultSubjects[lang];
+            updateSubject();
             document.querySelector('.actions button').textContent = lang === 'en' ? '🖨️ Save as PDF' : '🖨️ Enregistrer en PDF';
             document.querySelectorAll('.actions .btn-outline').forEach((a, i) => {
                 if (i === 0) a.textContent = lang === 'en' ? 'View my CV' : 'Voir mon CV';
                 if (i === 1) a.textContent = lang === 'en' ? 'Back to portfolio' : 'Retour au portfolio';
             });
         }
+
+        input.addEventListener('input', updateSubject);
         setLang('fr');
     </script>
 </body>
